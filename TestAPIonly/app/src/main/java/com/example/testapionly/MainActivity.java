@@ -22,9 +22,7 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<String> stations=new ArrayList<>();
         TextView textView=findViewById(R.id.textView);
 
-        Call<AllNodes> callConstantValue = SingletonRetrofitClient.getInstance().getApi().getConstantValue();
-
-        callConstantValue.enqueue(new Callback<AllNodes>() {
+        SingletonRetrofitClient.getInstance().getApi().getConstantValue().enqueue(new Callback<AllNodes>() {
             @Override
             public void onResponse(Call<AllNodes> call, Response<AllNodes> response) {
                 AllNodes allNodes = response.body();
