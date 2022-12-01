@@ -15,9 +15,6 @@ public class AllNodes implements Serializable {
     public ArrayList<Station> getAllNodes() {
         return allNodes;
     }
-
-    public void setAllNodes(ArrayList<Station> allNodes) {
-        this.allNodes = allNodes;
-    }
+    public void setAllNodes(ArrayList<Station> allNodes) { this.allNodes = allNodes; }
 
 }

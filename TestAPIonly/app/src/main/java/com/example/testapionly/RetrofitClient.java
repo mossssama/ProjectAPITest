@@ -2,27 +2,26 @@ package com.example.testapionly;
 
 import static com.example.testapionly.Api.BASE_URL;
 
+import com.google.gson.Gson;
+
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 /* Single Retrofit instance because Retrofit consumes large resources */
-public class SingletonRetrofitClient {
-    public static SingletonRetrofitClient instance =null;
+public class RetrofitClient {
+    public static RetrofitClient instance =null;
     private Api api;
 
-    /* Retrofit instance to send requests to Api */
-    private SingletonRetrofitClient(){
+    /*Retrofit instance to send requests to Api */
+    private RetrofitClient(){
         Retrofit retrofit= new Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create()).build();
         api=retrofit.create(Api.class);
     }
 
-    public static synchronized SingletonRetrofitClient getInstance(){
-        if(instance==null){
-            instance=new SingletonRetrofitClient();
-        }
+    public static synchronized RetrofitClient getInstance(){
+        if(instance==null){instance=new RetrofitClient();}
         return instance;
     }
 
-    public Api getApi(){
-        return api;
-    }
+    public Api getApi(){ return api; }
 }
+
