@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ArrayList<String> stations=new ArrayList<String>();
+        ArrayList<String> stations=new ArrayList<>();
         TextView textView=findViewById(R.id.textView);
 
         Call<AllNodes> callConstantValue = SingletonRetrofitClient.getInstance().getApi().getConstantValue();
@@ -32,8 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
                 for (Station n : nodes) { stations.add(n.getStationName()); }
 
-                accessArrayList(stations);
-                textView.setText(accessArrayList(stations).get(1));
+                textView.setText(stations.get(3));
 
             }
 
@@ -42,12 +41,6 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
-    }
-
-    ArrayList<String> accessArrayList(ArrayList<String> st){
-        ArrayList<String> tempStations=new ArrayList<String>();
-        for (String s : st){ tempStations.add(s);}
-        return tempStations;
     }
 
 }
